@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    margin-top: 100px;
 }
 
 h1, p, h2{
@@ -19,6 +24,7 @@ p {
     font-size: 22px;
     font-weight: bold;
     margin-top: 30px;
+    text-align: center;
 }
 
 .title {
@@ -86,6 +92,7 @@ img {
 
 .result {
     text-align: center;
+    margin-top: 20px;
 }
 
 .playagain {
