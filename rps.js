@@ -1,6 +1,3 @@
-let playerScore = 0;
-let computerScore = 0;
-let round = 0;
 const userScore_span = document.getElementById("user-score");
 const computerScore_span = document.getElementById("computer-score");
 const score_div = document.querySelector('score');
@@ -10,35 +7,39 @@ const paper_div = document.getElementById('p');
 const scissors_div = document.getElementById('s');
 const playagain_button = document.getElementById('playagainbutton');
 
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
+
 function win(userChoice, computerChoice) {
     playerScore++;
+    round++;
     userScore_span.innerHTML = playerScore;
     computerScore_span.innerHTML = computerScore;
     result_div.innerHTML = `<h2>${userChoice} beats ${computerChoice}, player wins</h2>`;
-    round++;
     gameOver();
 }
 
 function lose(userChoice, computerChoice) {
     computerScore++;
+    round++;
     computerScore_span.innerHTML = computerScore;
     userScore_span.innerHTML = playerScore;
     result_div.innerHTML = `<h2>${computerChoice} beats ${userChoice}, computer wins</h2>`;
-    round++;
     gameOver();
 }
 
 function draw(userChoice, computerChoice) {
+    round++;
     result_div.innerHTML = `<h2>${userChoice} and ${computerChoice}, it's a draw!</h2>`;
     userScore_span.innerHTML = playerScore;
     computerScore_span.innerHTML = computerScore;
-    round++;
     gameOver();
 }
 
 
 function gameOver() {
-    if(round == 5 && playerScore > computerScore) {
+    if(round === 3 && (playerScore > computerScore)) {
         result_div.innerHTML = `<h2>You win :)</h2>`;
         rock_div.style.pointerEvents = 'none';
         paper_div.style.pointerEvents = 'none';
@@ -47,7 +48,7 @@ function gameOver() {
         playAgain();
     }
 
-    else if(round == 5 && playerScore < computerScore) {
+    else if(round === 3 && (playerScore < computerScore)) {
         result_div.innerHTML = `<h2>You lose :(</h2>`;
         rock_div.style.pointerEvents = 'none';
         paper_div.style.pointerEvents = 'none';
